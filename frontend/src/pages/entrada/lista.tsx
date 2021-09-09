@@ -55,17 +55,24 @@ const rows = [
 
 ];
 
-export  function ListaEntrada() {
+export function ListaEntrada() {
   return (
     <>
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          checkboxSelection
-          disableSelectionOnClick
-        />
+      <div className="container">
+        <div className="d-flex flex-wrap align-items-center justify-content-lg-center mt-3">
+          <div className="col-auto ">
+            <p className="h1 mt-4">Itens</p>
+          </div>
+        </div>
+        <div style={{ height: 400, width: '100%' }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            checkboxSelection
+            disableSelectionOnClick
+          />
+        </div>
       </div>
     </>
   );
