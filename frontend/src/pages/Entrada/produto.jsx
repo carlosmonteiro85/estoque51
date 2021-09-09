@@ -3,6 +3,9 @@
 
 export function EntradaProduto() {
 
+    function alerta(){
+        alert("Esta funcionalidade ainda não implementada, logo estará funcionando... agradecemos a compreenção");
+     }
 
     return (
         <>
@@ -58,8 +61,8 @@ export function EntradaProduto() {
                                 <input type="number" id="inputPassword6" className="form-control" />
                             </div>
                             <div className="col-md-4">
-                                <button className="btn btn-primary"  >Add Produto</button>
-                                <button type="reset" className="btn btn-light ms-3" >Limpar</button>
+                                <button onClick={alerta} className="btn btn-primary"  >Add Produto</button>
+                                <button onClick={alerta} type="reset" className="btn btn-light ms-3" >Limpar</button>
                             </div>
                         </div>
                     </div>

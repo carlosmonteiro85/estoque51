@@ -1,6 +1,12 @@
 
 
 export function Header() {
+
+
+    function alerta(){
+       alert("Funcionalidade ainda não implementada, logo estará funcionando... agradecemos a compreenção");
+    }
+
     return (
         <>
             <header className="p-3 bg-primary text-white ">
@@ -28,7 +34,7 @@ export function Header() {
                                     <input type="text" id="inputPassword6" className="form-control" />
                                 </div>
                                 <div className="col-md-4">
-                                    <button className="btn btn-danger" >Finalizar</button>
+                                    <button onClick={alerta} className="btn btn-danger" >Finalizar</button>
                                 </div>
                             </div>
                         </div>
