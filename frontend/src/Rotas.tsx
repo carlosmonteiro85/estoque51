@@ -10,7 +10,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
      return(
          <BrowserRouter>
             <Switch>
-                <Route path="/" component={TelaEntrada} exact/>
+                <Route path="/" component={Home} exact/>
                 <Route path="/entrada" component={TelaEntrada} exact/>
                 <Route path="/estoque" component={TelaEstoque} exact/>
                 <Route path="/saida" component={TelaSaida} exact/>
