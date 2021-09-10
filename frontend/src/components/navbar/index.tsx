@@ -1,9 +1,9 @@
 
 import Logo from 'assets/images/logo.png';
 
-function alerta(){
+function alerta() {
     alert("Funcionalidade ainda não implementada, logo estará funcionando... agradecemos a compreenção");
- }
+}
 
 export function NavBar() {
     return (
@@ -19,6 +19,7 @@ export function NavBar() {
                         <li><a href="/entrada" className="nav-link px-2 text-white">Entrada</a></li>
                         <li><a href="/estoque" className="nav-link px-2 text-white">Estoque</a></li>
                         <li><a href="/saida" className="nav-link px-2 text-white">Saida</a></li>
+                        <li><a href="/fornecedores" className="nav-link px-2 text-white">Fornecedor</a></li>
                     </ul>
 
 

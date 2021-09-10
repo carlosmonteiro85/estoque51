@@ -10,6 +10,9 @@ export function EntradaProduto() {
     return (
         <>
             <header className="p-3 bg-secondary text-white ">
+            <div className="col-auto ">
+                    <p className="h4 ">Produto</p>
+                </div>
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-start justify-content-lg-start">
                         <div className="row g-3 text-start">
