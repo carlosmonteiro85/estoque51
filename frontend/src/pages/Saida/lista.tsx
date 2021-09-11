@@ -3,36 +3,55 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'Código', width: 90 },
+  {
+    field: 'id', headerName: 'Código', width: 130, headerAlign: 'center',
+    editable: false,
+    align: 'center',
+  },
   {
     field: 'nome',
     headerName: 'Descrição item',
-    width: 200,
-    editable: true,
+    width: 470,
+    headerAlign: 'center',
+    editable: false,
+    align: 'center',
   },
   {
     field: 'quantidade',
-    headerName: 'QT estoque',
+    headerName: 'Quantidade',
     type: 'number',
-    width: 150,
-    editable: true,
+    width: 200,
+    headerAlign: 'center',
+    editable: false,
+    align: 'center',
   },
   {
     field: 'valorVenda',
-    headerName: 'R$ Venda',
+    headerName: 'R$ Unitario',
     type: 'number',
-    width: 150,
-    editable: true,
+    width: 200,
+    headerAlign: 'center',
+    editable: false,
+    align: 'center',
+  },
+  {
+    field: 'valorTotalItem',
+    headerName: 'R$ Total',
+    type: 'number',
+    width: 200,
+    headerAlign: 'center',
+    editable: false,
+    align: 'center',
   },
 ];
 
 const rows = [
-  { id: '1', codigoBarra: '1234567', nome: 'Babida 51', fornecedor: 'Dristribuidora asdf', valorCusto: 10.0, valorVenda: 20.0, quantidade: 50, },
-  { id: '2', codigoBarra: '1234567', nome: 'Babida 51', fornecedor: 'Dristribuidora asdf', valorCusto: 10.0, valorVenda: 20.0, quantidade: 50, },
-  { id: '3', codigoBarra: '1234567', nome: 'Babida 51', fornecedor: 'Dristribuidora asdf', valorCusto: 10.0, valorVenda: 20.0, quantidade: 50, },
-  { id: '4', codigoBarra: '1234567', nome: 'Babida 51', fornecedor: 'Dristribuidora asdf', valorCusto: 10.0, valorVenda: 20.0, quantidade: 50, },
-  { id: '5', codigoBarra: '1234567', nome: 'Babida 51', fornecedor: 'Dristribuidora asdf', valorCusto: 10.0, valorVenda: 20.0, quantidade: 50, },
-  { id: '6', codigoBarra: '1234567', nome: 'Babida 51', fornecedor: 'Dristribuidora asdf', valorCusto: 10.0, valorVenda: 20.0, quantidade: 50, },
+  { id: '1', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
+  { id: '2', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
+  { id: '3', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
+  { id: '4', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
+  { id: '5', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
+  { id: '6', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
 
 ];
 

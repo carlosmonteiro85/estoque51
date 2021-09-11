@@ -58,6 +58,7 @@ export function HeaderEstoque() {
                                 <label className="col-form-label">Nº Lote</label>
                                 <input type="text" id="inputPassword6" className="form-control" />
                             </div>
+                            
                             <div className="col-md-4">
                                 <button onClick={alerta} className="btn btn-danger" >Gerar relatório</button>
                             </div>

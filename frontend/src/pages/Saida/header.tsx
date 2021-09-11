@@ -11,25 +11,27 @@ export function HeaderSaida() {
         <>
             <header className="p-3 bg-primary text-white ">
                 <div className="col-auto ">
-                    <p className="h4 ">Cadastro de entrada de mercadoria</p>
+                    <p className="h4 ">Cadastro de saída de itens</p>
                 </div>
                 <div className="container">
-                    <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <div className="row g-3 align-items-center text-start">
-                            <div className="col-md-3">
-                                <label className="col-form-label">Data Pedido</label>
+                    <div className="d-flex flex-wrap ">
+                        <div className="row g-3 text-start">
+                            <div className="col-md-4">
+                                <label className="col-form-label">Data saída</label>
                                 <input type="date" id="inputPassword6" className="form-control" />
-                            </div>
-                            <div className="col-md-3">
-                                <label className="col-form-label">Data Entrada</label>
-                                <input type="date" id="inputPassword6" className="form-control" />
-                            </div>
-                            <div className="col-md-2">
-                                <label className="col-form-label">NF</label>
-                                <input type="text" id="inputPassword6" className="form-control" />
                             </div>
                             <div className="col-md-4">
-                                <label className="col-form-label">Valor</label>
+                                <label className="col-form-label">Forma de pagamento</label>
+                                <select className="form-select" >
+                                    <option selected>Selecione</option>
+                                    <option value="1">Debito</option>
+                                    <option value="2">Credito</option>
+                                    <option value="3">Dinheiro</option>
+                                    <option value="4">Pix</option>
+                                </select>
+                            </div>
+                            <div className="col-md-4 " >
+                                <label className="col-form-label">Valor Total</label>
                                 <input type="text" id="inputPassword6" className="form-control" />
                             </div>
                             <div className="col-md-4">

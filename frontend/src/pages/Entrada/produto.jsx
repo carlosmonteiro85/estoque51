@@ -11,7 +11,7 @@ export function EntradaProduto() {
         <>
             <header className="p-3 bg-secondary text-white ">
             <div className="col-auto ">
-                    <p className="h4 ">Produto</p>
+                    <p className="h4 ">Adicionar Item</p>
                 </div>
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-start justify-content-lg-start">

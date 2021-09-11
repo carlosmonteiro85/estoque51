@@ -11,7 +11,7 @@ export function Header() {
         <>
             <header className="p-3 bg-primary text-white ">
                 <div className="col-auto ">
-                    <p className="h4 ">Cadastro de entrada de mercadoria</p>
+                    <p className="h4 ">Cadastro de entrada de Itens</p>
                 </div>
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">

@@ -6,9 +6,9 @@ const columns: GridColDef[] = [
   { field: 'id', headerName: 'Código', width: 150 , align: 'center', headerAlign: 'center',},
   {
     field: 'item',
-    headerAlign: 'center',
     headerName: 'Item',
     width: 250,
+    headerAlign: 'center',
     editable: false,
     align: 'center',
   },
