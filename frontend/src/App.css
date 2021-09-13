@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.minhaNavBar{
+  background-color: #162a46 !important;
+}
+
+.meuHead {
+  background-color: #457B9D !important;
+}
+
+.meuItem{
+  background-color: #A8DADC!important;
+}
+
+/* .minhaNavBar{
+  background-color: #1c1d1d !important;
+}
+
+.meuHead{
+  background-color: #008e97 !important;
+}
+
+.meuItem{
+  background-color: #f58220!important;
+} */

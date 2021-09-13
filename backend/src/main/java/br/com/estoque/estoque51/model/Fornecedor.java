@@ -3,14 +3,38 @@ package br.com.estoque.estoque51.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "fornecedores")
 public class Fornecedor {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "nome_fornecedor")
 	private String nome;
+	
+	@Column(name = "cnpj", unique = true)
 	private String cnpj;
+	
+	@Column(name = "telefone")
 	private String telefone;
+	
+	@Column(name = "email")
 	private String email;
-	private List<String> vendedores = new ArrayList<>();
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	private List<Vendedor> vendedores = new ArrayList<>();
 	
 	public String getNome() {
 		return nome;
@@ -36,17 +60,17 @@ public class Fornecedor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<String> getVendedores() {
-		return vendedores;
-	}
-	public void setVendedores(List<String> vendedores) {
-		this.vendedores = vendedores;
-	}
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public List<Vendedor> getVendedores() {
+		return vendedores;
+	}
+	public void setVendedores(List<Vendedor> vendedores) {
+		this.vendedores = vendedores;
 	}
 
 }

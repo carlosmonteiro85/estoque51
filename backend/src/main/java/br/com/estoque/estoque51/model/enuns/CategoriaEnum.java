@@ -1,4 +1,4 @@
-package br.com.estoque.estoque51.model;
+package br.com.estoque.estoque51.model.enuns;
 
 public enum CategoriaEnum {
 	
