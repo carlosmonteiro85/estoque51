@@ -1,4 +1,4 @@
-package br.com.estoque.estoque51;
+package br.com.estoque.estoque51.controller;
 
 import java.util.List;
 
