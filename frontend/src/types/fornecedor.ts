@@ -1,10 +1,10 @@
-import { vendedor } from "./vendedor";
+import { Vendedor } from "./vendedor";
 
-export type fornecedor =  {  
+export type Fornecedor =  {  
     "id": number,
     "nome": string,
     "cnpj": string,
     "telefone": string,
     "email": string,
-    "vendedores": vendedor[]
+    "vendedores": Vendedor[]
 }
