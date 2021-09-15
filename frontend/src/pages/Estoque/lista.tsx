@@ -112,13 +112,41 @@ export function ListaEstoque() {
           </div>
         </div>
         <div style={{ height: 400, width: '100%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            checkboxSelection
-            disableSelectionOnClick
-          />
+        <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">QT</th>
+                <th scope="col">Lote</th>
+                <th scope="col">R$ custo</th>
+                <th scope="col">R$ venda</th>
+                <th scope="col">nf</th>
+                <th scope="col">Data Pedido</th>
+                <th scope="col">Data Entrada</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Descrição do item</td>
+                <td>Fornecedor 1</td>
+                <td>30</td>
+                <td>9989</td>
+                <td>40,30</td>
+                <td>80,30</td>
+                <td>6789</td>
+                <td>01/01/2021</td>
+                <td>01/01/2021</td>
+                <td>
+                  <a href="">ver</a>
+                  <a href="">vendedor</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </>

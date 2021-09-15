@@ -65,13 +65,31 @@ export function ListaSaida() {
           </div>
         </div>
         <div style={{ height: 400, width: '100%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            checkboxSelection
-            disableSelectionOnClick
-          />
+        <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Qt</th>
+                <th scope="col">R$ venda</th>
+                <th scope="col">R$ total items</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Bibida 1</td>
+                <td>20</td>
+                <td>20,30</td>
+                <td>203,00</td>
+                <td>
+                  <a href="">ver</a>
+                  <a href="">vendedor</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </>

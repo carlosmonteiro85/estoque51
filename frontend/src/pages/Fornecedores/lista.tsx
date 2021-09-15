@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { type } from 'os';
+
+import { fornecedor } from 'types/fornecedor';
 
 
 const columns: GridColDef[] = [
@@ -40,6 +43,8 @@ const rows = [
   { id: '1', nome: 'Asdf', cnpj: '000.000.0001-01', telefone: '3333-3333', email: 'asdf@asdf' },
 ];
 
+let fornecedoresTabela: fornecedor[];
+
 export function ListaFornecedores() {
   return (
     <>
@@ -50,13 +55,29 @@ export function ListaFornecedores() {
           </div>
         </div>
         <div style={{ height: 400, width: '100%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            checkboxSelection
-            disableSelectionOnClick
-          />
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CNPJ</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>
+                  <a href="">ver</a>
+                  <a href="">vendedor</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </>
