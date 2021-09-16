@@ -46,8 +46,8 @@ export function ListaFornecedores() {
                     <td>{item.telefone}</td>
                     <td>{item.email}</td>
                     <td>
-                      <a href="">vendedores</a>
-                      <a className="ms-2" href="">ver perfil</a>
+                      <a href="/">vendedores</a>
+                      <a className="ms-2" href="/">ver perfil</a>
                     </td>
                 </tr>)
               })}

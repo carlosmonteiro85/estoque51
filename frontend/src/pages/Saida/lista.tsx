@@ -1,51 +1,9 @@
 import * as React from 'react';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+/* import { DataGrid, GridColDef } from '@mui/x-data-grid'; */
 
 
-const columns: GridColDef[] = [
-  {
-    field: 'id', headerName: 'Código', width: 130, headerAlign: 'center',
-    editable: false,
-    align: 'center',
-  },
-  {
-    field: 'nome',
-    headerName: 'Descrição item',
-    width: 470,
-    headerAlign: 'center',
-    editable: false,
-    align: 'center',
-  },
-  {
-    field: 'quantidade',
-    headerName: 'Quantidade',
-    type: 'number',
-    width: 200,
-    headerAlign: 'center',
-    editable: false,
-    align: 'center',
-  },
-  {
-    field: 'valorVenda',
-    headerName: 'R$ Unitario',
-    type: 'number',
-    width: 200,
-    headerAlign: 'center',
-    editable: false,
-    align: 'center',
-  },
-  {
-    field: 'valorTotalItem',
-    headerName: 'R$ Total',
-    type: 'number',
-    width: 200,
-    headerAlign: 'center',
-    editable: false,
-    align: 'center',
-  },
-];
 
-const rows = [
+/* const rows = [
   { id: '1', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
   { id: '2', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
   { id: '3', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
@@ -53,7 +11,7 @@ const rows = [
   { id: '5', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
   { id: '6', nome: 'asdf asdfasdf ', quantidade: 50, valorVenda: 10, valorTotalItem: 500.0 },
 
-];
+]; */
 
 export function ListaSaida() {
   return (
@@ -84,8 +42,8 @@ export function ListaSaida() {
                 <td>20,30</td>
                 <td>203,00</td>
                 <td>
-                  <a href="">ver</a>
-                  <a href="">vendedor</a>
+                  <a href="/">ver</a>
+                  <a href="/">vendedor</a>
                 </td>
               </tr>
             </tbody>
