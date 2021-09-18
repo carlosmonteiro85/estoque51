@@ -9,7 +9,7 @@ export function EntradaProduto() {
 
     return (
         <>
-            <header className="p-3  text-dark meuItem">
+            <header className="p-3  text-dark meuItemEntrada">
             <div className="col-auto ">
                     <p className="h4 ">Adicionar Item</p>
                 </div>

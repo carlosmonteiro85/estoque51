@@ -30,6 +30,7 @@ export function ListaFornecedores() {
       });
     }
   }
+
   return (
     <>
       <div className="container">
@@ -64,7 +65,7 @@ export function ListaFornecedores() {
                     <td width="20%">{item.email}</td>
                     <td width="10%" >{item.vendedor}</td>
                     <td>
-                      <MeuIcone href="/" src={Editar} className="" item={item.id} />
+                      <MeuIcone href="/fornecedores" src={Editar} className="" {...item} />
                       <MeuIcone href="/fornecedores" src={Excluir} className="ms-3" item={item.id} onClick={() => deletarFornecedor(item.id)} />
                     </td>
                   </tr>)

@@ -51,7 +51,7 @@ export function HeaderFornecedores() {
 
     return (
         <>
-            <header className="p-3 bg-primary text-white ">
+            <header className="p-3 text-white meuHead">
                 <div className="col-auto ">
                     <p className="h4 ">Cadastro de fornecedor</p>
                 </div>
