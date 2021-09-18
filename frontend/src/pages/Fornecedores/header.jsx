@@ -21,7 +21,8 @@ export function HeaderFornecedores() {
           nome: fornecedor.nome,
           cnpj: fornecedor.cnpj,
           telefone: fornecedor.telefone,
-          email: fornecedor.email
+          email: fornecedor.email,
+          vendedor: fornecedor.vendedor
         };
 
         //chama ometodo service q é declarado como post e add o 
@@ -34,6 +35,7 @@ export function HeaderFornecedores() {
           cnpj: response.data.cnpj,
           telefone: response.data.telefone,
           email: response.data.email,
+          vendedor: response.data.vendedor,
 
           //submet o formulario
           submitted: true
@@ -58,8 +60,8 @@ export function HeaderFornecedores() {
                         <form >
 
                             <div className="row g-3 align-items-center text-start">
-                                <div className="col-md-4">
-                                    <label className="col-form-label">Nome</label>
+                                <div className="col-md-5">
+                                    <label className="col-form-label">Nome da fornecedora</label>
                                     <input 
                                         type="text" 
                                         onChange={handleInputChange} 
@@ -87,7 +89,7 @@ export function HeaderFornecedores() {
                                         id="telefone" 
                                         className="form-control" />
                                 </div>
-                                <div className="col-md-4">
+                                <div className="col-md-3">
                                     <label className="col-form-label">Email</label>
                                     <input 
                                         type="email" 
@@ -96,6 +98,18 @@ export function HeaderFornecedores() {
                                         name="email" 
                                         id="email" 
                                         className="form-control" />
+                                </div>
+                                <div className="col-md-5">
+                                    <label className="col-form-label">Vendedor</label>
+                                    <input 
+                                        type="vendedor" 
+                                        onChange={handleInputChange} 
+                                        value={fornecedor.vendedor} 
+                                        name="vendedor" 
+                                        id="vendedor" 
+                                        className="form-control" />
+                                </div>
+                                <div className="col-md-5">
                                 </div>
                                 <div className="col-md-4">
                                     <button onClick={saveFornecedor} className="btn btn-danger" >Add</button>
