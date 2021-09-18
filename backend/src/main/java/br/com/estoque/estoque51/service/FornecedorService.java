@@ -60,7 +60,7 @@ public class FornecedorService {
 	}
 
 	private MessageResponseDTO createMessageResponse(Integer id, String message) {
-		return MessageResponseDTO.builder().message(message + id);
+		return MessageResponseDTO.builder().message(message);
 	}
 
 	public Fornecedor findByCnpj(String cnpj) {

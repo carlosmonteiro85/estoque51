@@ -1,9 +1,9 @@
 import { Fornecedor } from 'types/fornecedor';
 import http from '../http-common';
 
-class TutorialDataService {
+class ServiceFornecedor {
   listarTodos() {
-    return http.get("/fornecedor");
+    return http.get(`/fornecedor`);
   }
 
   findById(id: number) {
@@ -23,4 +23,4 @@ class TutorialDataService {
     }
   }
   
-  export default new TutorialDataService();
+  export default new ServiceFornecedor();

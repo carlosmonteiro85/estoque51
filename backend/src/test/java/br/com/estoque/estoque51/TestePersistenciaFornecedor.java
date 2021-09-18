@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.estoque.estoque51.exceptions.FornecedorNotFoundException;
 import br.com.estoque.estoque51.model.Fornecedor;
-import br.com.estoque.estoque51.model.Vendedor;
 import br.com.estoque.estoque51.service.FornecedorService;
 
 public class TestePersistenciaFornecedor extends Estoque51ApplicationTests {
@@ -80,15 +79,8 @@ public class TestePersistenciaFornecedor extends Estoque51ApplicationTests {
 		fornecedor.setEmail("fornecedor@fornecedor.com");
 		fornecedor.setNome("Fornecedor One LTDA");
 		fornecedor.setTelefone("333-3333");
-
-		List<Vendedor> vendedores = fornecedor.getVendedores();
-
-		Vendedor vendedor = new Vendedor();
-		vendedor.setNome("Vendedor 1");
-		vendedores.add(vendedor);
-
-		fornecedor.setVendedores(vendedores);
-
+		fornecedor.setVendedor("Vendedor");
+		
 		return fornecedor;
 	}
 }

@@ -1,4 +1,4 @@
-import { Vendedor } from "./vendedor";
+
 
 export type Fornecedor =  {  
     "id": number,
@@ -6,5 +6,5 @@ export type Fornecedor =  {
     "cnpj": string,
     "telefone": string,
     "email": string,
-    "vendedores": Vendedor[]
+    "vendedor": string
 }

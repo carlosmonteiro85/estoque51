@@ -1,19 +1,35 @@
-import axios from 'axios';
+
 import { useEffect, useState } from 'react';
+import serviceFornecedor from 'services/serviceFornecedor';
 import { Fornecedor } from 'types/fornecedor';
-import { BASE_URL } from 'utils/requests';
+
+import { MeuIcone } from 'components/Icones/index';
+
+import Excluir from '../../assets/icons/fi-rr-user-delete.svg';
+import Editar from '../../assets/icons/fi-rr-edit.svg';
 
 
 export function ListaFornecedores() {
 
-  const [fornecedorTabela , setFornecedorTabela] = useState<Fornecedor[]>([]);
-
-  useEffect( () => {
-    axios.get(`${BASE_URL}/fornecedor`).then(response => {
+  //estado
+  const [fornecedorTabela, setFornecedorTabela] = useState<Fornecedor[]>([]);
+  //renderizando componente
+  useEffect(() => {
+    serviceFornecedor.listarTodos().then(response => {
       setFornecedorTabela(response.data)
     })
   }, [])
 
+  function deletarFornecedor(item: number) {
+    //alerta para confirmação de exclusão
+    var verificacao = window.confirm(" Tem certeza que deseja excluir este item?")
+    //verificação 
+    if (verificacao === true) {
+      serviceFornecedor.delete(item).then(response => {
+        setFornecedorTabela(response.data)
+      });
+    }
+  }
   return (
     <>
       <div className="container">
@@ -31,25 +47,27 @@ export function ListaFornecedores() {
                 <th scope="col">CNPJ</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
+                <th scope="col">Vendedor</th>
                 <th scope="col">Ação</th>
               </tr>
             </thead>
             <tbody>
-              {/*Realizando um ma() no arrey*/}
-              {fornecedorTabela.map((item, i) => {  
+              {/*Realizando um map() no arrey*/}
+              {fornecedorTabela.map((item, i) => {
                 return (
                   //retornando os itens do array
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.nome}</td>
-                    <td>{item.cnpj}</td>
-                    <td>{item.telefone}</td>
-                    <td>{item.email}</td>
+                    <td width="25%">{item.nome}</td>
+                    <td >{item.cnpj}</td>
+                    <td width="10%">{item.telefone}</td>
+                    <td width="20%">{item.email}</td>
+                    <td width="10%" >{item.vendedor}</td>
                     <td>
-                      <a href="/">vendedores</a>
-                      <a className="ms-2" href="/">ver perfil</a>
+                      <MeuIcone href="/" src={Editar} className="" item={item.id} />
+                      <MeuIcone href="/fornecedores" src={Excluir} className="ms-3" item={item.id} onClick={() => deletarFornecedor(item.id)} />
                     </td>
-                </tr>)
+                  </tr>)
               })}
             </tbody>
           </table>
@@ -58,3 +76,4 @@ export function ListaFornecedores() {
     </>
   );
 }
+
