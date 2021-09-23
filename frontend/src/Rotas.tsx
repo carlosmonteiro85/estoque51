@@ -2,6 +2,7 @@
 import { TelaEntrada } from 'pages/Entrada/telaEntrada';
 import { TelaEstoque } from 'pages/Estoque/telaEstoque';
 import { TelaFornecedor } from 'pages/Fornecedores/telaFornecedor';
+
 import { Home } from 'pages/home';
 import { TelaSaida } from 'pages/Saida/telaSaida';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';

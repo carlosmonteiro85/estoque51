@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import serviceFornecedor from 'services/serviceFornecedor';
-import { Fornecedor } from 'types/fornecedor';
 
 import { MeuIcone } from 'components/Icones/index';
 
@@ -12,7 +11,7 @@ import Editar from '../../assets/icons/fi-rr-edit.svg';
 export function ListaFornecedores() {
 
   //estado
-  const [fornecedorTabela, setFornecedorTabela] = useState<Fornecedor[]>([]);
+  const [fornecedorTabela, setFornecedorTabela] = useState([]);
   //renderizando componente
   useEffect(() => {
     serviceFornecedor.listarTodos().then(response => {
@@ -20,13 +19,13 @@ export function ListaFornecedores() {
     })
   }, [])
 
-  function deletarFornecedor(item: number) {
+  function deletarFornecedor(item) {
     //alerta para confirmação de exclusão
-    var verificacao = window.confirm(" Tem certeza que deseja excluir este item?")
+    var verificacao = window.confirm(" Tem certeza que deseja excluir este item?");
     //verificação 
     if (verificacao === true) {
-      serviceFornecedor.delete(item).then(response => {
-        setFornecedorTabela(response.data)
+      serviceFornecedor.delete(item.id).then(response => {
+        alert(response.data.message);
       });
     }
   }
@@ -53,7 +52,6 @@ export function ListaFornecedores() {
               </tr>
             </thead>
             <tbody>
-              {/*Realizando um map() no arrey*/}
               {fornecedorTabela.map((item, i) => {
                 return (
                   //retornando os itens do array
@@ -65,8 +63,8 @@ export function ListaFornecedores() {
                     <td width="20%">{item.email}</td>
                     <td width="10%" >{item.vendedor}</td>
                     <td>
-                      <MeuIcone href="/fornecedores" src={Editar} className="" {...item} />
-                      <MeuIcone href="/fornecedores" src={Excluir} className="ms-3" item={item.id} onClick={() => deletarFornecedor(item.id)} />
+                      <MeuIcone src={Editar} className="" {...item} />
+                      <MeuIcone src={Excluir} className="ms-3" onClick={() => deletarFornecedor(item)} />
                     </td>
                   </tr>)
               })}

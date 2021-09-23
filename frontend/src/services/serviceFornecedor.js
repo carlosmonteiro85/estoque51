@@ -1,4 +1,4 @@
-import { Fornecedor } from 'types/fornecedor';
+
 import http from '../http-common';
 
 class ServiceFornecedor {
@@ -6,19 +6,19 @@ class ServiceFornecedor {
     return http.get(`/fornecedor`);
   }
 
-  findById(id: number) {
+  findById(id) {
     return http.get(`/fornecedor/${id}`);
   }
 
-  createFornecedor(data: Fornecedor) {
+  createFornecedor(data) {
     return http.post("/fornecedor/", data);
   }
   
-    updateById(id: number, data: Fornecedor) {
+    updateById(id, data) {
       return http.put(`/fornecedor/${id}`, data);
     }
   
-    delete(id: number) {
+    delete(id) {
       return http.delete(`/fornecedor/${id}`);
     }
   }
