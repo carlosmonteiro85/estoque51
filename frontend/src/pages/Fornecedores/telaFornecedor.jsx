@@ -23,14 +23,9 @@ export function TelaFornecedor() {
         const { name, value } = event.target;
         setFornecedor({ ...fornecedor, [name]: value });
     };
-
     const preecherForm = (item) => {
-
         setFornecedor(item);
-        console.log(item);
-
     }
-
     //cria uma variavel chamada data e add os atributos da variavel fornecedor
     const saveFornecedor = () => {
         var data = {
@@ -63,7 +58,6 @@ export function TelaFornecedor() {
             //recebe uma resposta e addciona ao um alert
             alert(response.data.message);
             window.location.href = "/fornecedores";
-            console.log(response.data);
           })
           .catch(e => {
             console.log(e);
@@ -87,7 +81,6 @@ export function TelaFornecedor() {
                 //recebe uma resposta e addciona ao um alert
                 alert(response.data.message);
                 window.location.href = "/fornecedores";
-                console.log(response.data);
               })
               .catch(e => {
                 console.log(e);
@@ -100,7 +93,6 @@ export function TelaFornecedor() {
     //*************************************** LOGICA DA LISTA ****************************************************************** */
     //estado da lista
     const [fornecedorTabela, setFornecedorTabela] = useState([]);
-
     //metodo http-delete que deleta o item
     const deletarFornecedor = (item) => {
         //alerta para confirmação de exclusão
