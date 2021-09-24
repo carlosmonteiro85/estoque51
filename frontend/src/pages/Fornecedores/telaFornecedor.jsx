@@ -1,4 +1,4 @@
-import { TextField, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { useState, useEffect } from "react";
 
 import { MeuIcone } from 'components/Icones/index';
@@ -6,6 +6,7 @@ import serviceFornecedor from "services/serviceFornecedor";
 
 import Excluir from '../../assets/icons/fi-rr-user-delete.svg';
 import Editar from '../../assets/icons/fi-rr-edit.svg';
+import { Input } from "components/input";
 
 
 export function TelaFornecedor() {
@@ -16,12 +17,6 @@ export function TelaFornecedor() {
     //useState([]): recebe o estado inicial de vazio.
     const [fornecedor, setFornecedor] = useState([]);
 
-    /*  const [nome, setNome] = useState([]);
-        const [cnpj, setCnpj] = useState([]);
-        const [email, setEmail] = useState([]);
-        const [telefone, setTelefone] = useState([]);
-        const [vendedor, setVendedor] = useState([]); */
-
     //usa o valor do input e add esse valor na variavel a cima
     //endereçado pelo atributo name do imput
     const handleInputChange = event => {
@@ -29,40 +24,77 @@ export function TelaFornecedor() {
         setFornecedor({ ...fornecedor, [name]: value });
     };
 
+    const preecherForm = (item) => {
+
+        setFornecedor(item);
+        console.log(item);
+
+    }
+
     //cria uma variavel chamada data e add os atributos da variavel fornecedor
     const saveFornecedor = () => {
         var data = {
-            nome: fornecedor.nome,
-            cnpj: fornecedor.cnpj,
-            telefone: fornecedor.telefone,
-            email: fornecedor.email,
-            vendedor: fornecedor.vendedor
+          id: fornecedor.id,  
+          nome: fornecedor.nome,
+          cnpj: fornecedor.cnpj,
+          telefone: fornecedor.telefone,
+          email: fornecedor.email,
+          vendedor: fornecedor.vendedor
         };
-        //chama o metodo service q é declarado como post e add o 
-        //resultado do request do post a variavel data
-        serviceFornecedor.createFornecedor(data)
-            .then(response => {
-                setFornecedor({
-                    id: response.data.id,
-                    nome: response.data.nome,
-                    cnpj: response.data.cnpj,
-                    telefone: response.data.telefone,
-                    email: response.data.email,
-                    vendedor: response.data.vendedor,
 
-                    //submet o formulario
-                    submitted: true
+        //verifica se o item ja tem id, se tiver realiza o update, se não cria o item
+        if(data.id == null){
+
+            //chama o metodo service q é declarado como post e add o 
+            //resultado do request do post a variavel data
+            serviceFornecedor.createFornecedor(data)
+          .then(response => {
+            setFornecedor({
+              id: response.data.id,
+              nome: response.data.nome,
+              cnpj: response.data.cnpj,
+              telefone: response.data.telefone,
+              email: response.data.email,
+              vendedor: response.data.vendedor,
+    
+              //submet o formulario
+              submitted: true
+            });
+            //recebe uma resposta e addciona ao um alert
+            alert(response.data.message);
+            window.location.href = "/fornecedores";
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+
+        }else{
+
+            //metodo http put de update
+            serviceFornecedor.updateById(data.id, data).then(response => {
+                setFornecedor({
+                  id: response.data.id,
+                  nome: response.data.nome,
+                  cnpj: response.data.cnpj,
+                  telefone: response.data.telefone,
+                  email: response.data.email,
+                  vendedor: response.data.vendedor,
+        
+                  //submet o formulario
+                  submitted: true
                 });
                 //recebe uma resposta e addciona ao um alert
                 alert(response.data.message);
-                console.log(response.data);
-                //redirecionamento
                 window.location.href = "/fornecedores";
-            })
-            .catch(e => {
+                console.log(response.data);
+              })
+              .catch(e => {
                 console.log(e);
-            });
-    };
+              });
+        }
+
+  };
     //*************************************** FIM DA LOGICA DO FORM ****************************************************************** */
 
     //*************************************** LOGICA DA LISTA ****************************************************************** */
@@ -104,76 +136,51 @@ export function TelaFornecedor() {
                             //Desabilita o comportamento padao de recarregar o form ao ser submetido
                             event.preventDefault();
                         }}>
-                            <div className="row g-3 align-items-center text-start mt-3">
+                            <div className="row g-3 align-items-center text-start">
                                 <div className="col-md-5 ">
-                                    <TextField
-                                        className="meuTextField"
+                                    <Input
+                                        type="text"
                                         onChange={handleInputChange}
                                         value={fornecedor.nome}
                                         name="nome"
                                         id="nome"
-                                        variant='filled'
-                                        label="Nome"
-                                        fullWidth
-                                        color="primary"
-                                        size='small'
-                                    />
+                                    >Nome</Input>
                                 </div>
                                 <div className="col-md-2">
-                                    <TextField
-                                        className="meuTextField"
-                                        id="cnpj"
-                                        variant='filled'
-                                        label="CNPJ"
-                                        fullWidth
-                                        color="primary"
-                                        size='small'
+                                    <Input
+                                        type="text"
                                         onChange={handleInputChange}
                                         value={fornecedor.cnpj}
                                         name="cnpj"
-                                    />
+                                        id="cnpj"
+                                    >CNPJ</Input>
                                 </div>
                                 <div className="col-md-2">
-                                    <TextField
-                                        className="meuTextField"
-                                        id="telefone"
-                                        variant='filled'
-                                        label="Telefone"
-                                        fullWidth
-                                        color="primary"
-                                        size='small'
+                                    <Input
+                                        type="text"
                                         onChange={handleInputChange}
                                         value={fornecedor.telefone}
                                         name="telefone"
-                                    />
+                                        id="telefone"
+                                    >Telefone</Input>
                                 </div>
                                 <div className="col-md-3">
-                                    <TextField
-                                        className="meuTextField"
-                                        id="email"
-                                        variant='filled'
-                                        label="Email"
-                                        fullWidth
-                                        color="primary"
-                                        size='small'
+                                    <Input
+                                        type="email"
                                         onChange={handleInputChange}
                                         value={fornecedor.email}
                                         name="email"
-                                    />
+                                        id="email"
+                                    >Email</Input>
                                 </div>
                                 <div className="col-md-5">
-                                    <TextField
-                                        className="meuTextField"
-                                        id="vendedor"
-                                        variant='filled'
-                                        label="Vendedor"
-                                        fullWidth
-                                        color="primary"
-                                        size='small'
+                                    <Input
+                                        type="text"
                                         onChange={handleInputChange}
                                         value={fornecedor.vendedor}
                                         name="vendedor"
-                                    />
+                                        id="vendedor"
+                                    >Vendedor</Input>
                                 </div>
                                 <div className="col-md-5">
                                 </div>
@@ -182,9 +189,7 @@ export function TelaFornecedor() {
                                         variant="contained"
                                         color="warning"
                                         onClick={saveFornecedor}
-                                    >
-                                        Add
-                                    </Button>
+                                    >Salvar</Button>
                                 </div>
                             </div>
 
@@ -226,7 +231,7 @@ export function TelaFornecedor() {
                                         <td width="20%">{item.email}</td>
                                         <td width="10%" >{item.vendedor}</td>
                                         <td>
-                                            <MeuIcone src={Editar} className="" {...item} />
+                                            <MeuIcone src={Editar} className="" onClick={() => preecherForm(item)} />
                                             <MeuIcone src={Excluir} className="ms-3" onClick={() => deletarFornecedor(item)} />
                                         </td>
                                     </tr>)
