@@ -3,14 +3,14 @@
 
 export function EntradaProduto() {
 
-    function alerta(){
+    function alerta() {
         alert("Esta funcionalidade ainda não implementada, logo estará funcionando... agradecemos a compreenção");
-     }
+    }
 
     return (
         <>
             <header className="p-3  text-dark meuItemEntrada">
-            <div className="col-auto ">
+                <div className="col-auto ">
                     <p className="h4 ">Adicionar Item</p>
                 </div>
                 <div className="container">
