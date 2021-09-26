@@ -28,5 +28,11 @@ public class MessageResponseDTO {
 		messageResponseDTO.setMessage(string);
 		return messageResponseDTO;
 	}
+	
+	public static MessageResponseDTO createMessageResponse(Integer id, String message) {
+		return MessageResponseDTO.builder().message(message);
+	}
+	
+	
 
 }
