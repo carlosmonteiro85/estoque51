@@ -22,20 +22,23 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "codigo_barras", unique = true)
-	private String codigoBarras;
-
+	@Column(name = "descricao")
+	private String descricao;
+	
 	@OneToOne
 	private Fornecedor fornecedor;
-
+	
 	@Enumerated(EnumType.ORDINAL)
 	private CategoriaEnum categoria;
-
-	@Column(name = "lote")
-	private String lote;
-
+	
 	@Column(name = "quantidade_unidade_caixa")
 	private Integer quantidadeCaixa;
+	
+	@Column(name = "lote")
+	private String lote;
+	
+	@Column(name = "codigo_barras", unique = true)
+	private String codigoBarras;
 
 	@Column(name = "valor_custo")
 	private BigDecimal custo;
@@ -46,18 +49,16 @@ public class Item {
 	@Column(name = "imposto")
 	private BigDecimal imposto;
 
-	@Column(name = "nome")
-	private String nome;
 	
 	@OneToOne
 	private Entrada entrada;
 
 	public String getNome() {
-		return nome;
+		return descricao;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.descricao = nome;
 	}
 
 	public Fornecedor getFornecedor() {
