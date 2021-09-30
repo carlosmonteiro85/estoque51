@@ -9,62 +9,70 @@ export function TelaEntrada() {
     //arrey de fornecedores para preenchimento do select
     const [fornecedores, setFornecedores] = useState([]);
 
-    //ciclo de vida de componentes
-    useEffect(() => {
-        serviceFornecedor.listarTodos().then(response => {
-            setFornecedores(response.data)
-            setItem(item);
-        })
-    }, [])
+    /********************************* Logica Itens *******************************************************************/
 
-/********************************* Logica Itens *******************************************************************/    
-    
+/*     const item = [
+        {
+            descricao: 'Bebida 51',
+            fornecedor: {
+                nome: 'fornecedor',
+                cnpj: '00001',
+                telefone: '00001',
+                email: 'asdf@asdf',
+                vendedor: 'vendedor'
+            },
+            categoria: '',
+            qtUnidade: 20,
+            quantidadeCaixa: 0,
+            lote: 'fds',
+            codigoBarras: '34567',
+            custo: 20.30,
+            venda: 40.30,
+            imposto: 0,
+        }
+    ]; */
 
+    /* const itens = []; */
 
-const handleInputChangeItem = event => {
-    const { name, value } = event.target;
-  /*    setFornecedor({ ...fornecedor, [name]: value });  */
-    console.log(name, value);
-};
+    const [itens, setItens] = useState([]);
 
-const item = [
-    { 
-        descricao: 'Bebida 51',
-        fornecedor: {
-            nome: 'fornecedor',
-            cnpj: '',
-            telefone: '',
-            email: '',
-            vendedor: ''
-        }, 
-        categoria: '',
-        qtUnidade: 20,
-        quantidadeCaixa:0,
-        lote: '',
-        codigoBarras: '34567', 
-        custo: 20.30,
-        venda: 40.30,
-        imposto:0,
-    }
-];
+    const [items, setItem] = useState([]);
 
-const [items , setItem] = useState([]);
+    const handleInputChangeItem = event => {
+        const { name, value } = event.target;
+        setItem({ ...items, [name]: value });
+        console.log({ ...items, [name]: value });
+    };
 
-
-
-/********************************* Final Logica Itens tabela *******************************************************************/        
+    /********************************* Final Logica Itens tabela *******************************************************************/
 
     const exibirDados = () => {
     }
 
+    
     function alerta() {
         alert("Funcionalidade ainda não implementada, logo estará funcionando... agradecemos a compreenção");
     }
 
+    function addItem(){
+        itens.push(items);
+        setItens(items);
+        console.log(itens);
+    }
+
+        //ciclo de vida de componentes
+        useEffect(() => {
+            serviceFornecedor.listarTodos().then(response => {
+                setFornecedores(response.data)
+                setItens(itens)
+                /* setItem(itens); */
+            })
+        }, [itens])
+    
+
     return (
         <>
             <form >
-
                 <header className="p-3 text-white meuHead">
                     <div className="col-auto ">
                         <p className="h4 ">Cadastro de entrada de Itens</p>
@@ -99,130 +107,133 @@ const [items , setItem] = useState([]);
                         </div>
                     </div>
                 </header>
- {/********************************* Itens *******************************************************************/}
+                {/********************************* Itens *******************************************************************/}
                 <header className="p-3  text-dark meuItemEntrada">
                     <div className="col-auto ">
                         <p className="h4 ">Adicionar Item</p>
                     </div>
-                    <div className="container">
-                        <div className="d-flex flex-wrap align-items-start justify-content-lg-start">
-                            <div className="row g-3 text-start">
-                            <div className="col-md-2">
-                                    <Input
-                                        type="text"
-                                        onChange={handleInputChangeItem}
-                                        value={item.codigoBarras}
-                                        name="codigoBarras"
-                                        id="codigoBarras"
-                                    >Codigo de barras</Input> 
+
+                    <form >
+                        <div className="container">
+                            <div className="d-flex flex-wrap align-items-start justify-content-lg-start">
+                                <div className="row g-3 text-start">
+                                    <div className="col-md-2">
+                                        <Input
+                                            type="text"
+                                            onChange={handleInputChangeItem}
+                                            value={items.codigoBarras}
+                                            name="codigoBarras"
+                                            id="codigoBarras"
+                                        >Codigo de barras</Input>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <Input
+                                            type="text"
+                                            onChange={handleInputChangeItem}
+                                            value={items.descricao}
+                                            name="descricao"
+                                            id="descricao"
+                                        >Descrição item</Input>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <label className="col-form-label">Fornecedor</label>
+                                        {/*Preenchendo os dados do select com dados do banco*/}
+                                        <select onChange={exibirDados()} className="form-select" >
+                                            <option selected>Selecione</option>
+                                            {fornecedores.map(fornecedor =>
+                                                <option value={fornecedor.id} key={fornecedor.id}>{fornecedor.nome}</option>
+                                            )}
+                                        </select>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <label className="col-form-label">Categoria</label>
+                                        <select className="form-select" >
+                                            <option selected>Selecione</option>
+                                            <option value="1">Bebidas</option>
+                                            <option value="2">Doces</option>
+                                            <option value="3">Aperitivos</option>
+                                            <option value="4">Tabacaria</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-md-1">
+                                        <Input
+                                            type="number"
+                                            onChange={handleInputChangeItem}
+                                            value={items.qtUnidade}
+                                            name="qtUnidade"
+                                            id="qtUnidade"
+                                        >Qt unidade</Input>
+                                    </div>
+                                    <div className="col-md-1">
+                                        <Input
+                                            type="number"
+                                            onChange={handleInputChangeItem}
+                                            value={items.quantidadeCaixa}
+                                            name="quantidadeCaixa"
+                                            id="quantidadeCaixa"
+                                        >Qt caixa</Input>
+                                    </div>
                                 </div>
-                                <div className="col-md-3">
-                                    <Input
-                                        type="text"
-                                        onChange={handleInputChangeItem}
-                                        value={item.descricao}
-                                        name="descricao"
-                                        id="descricao"
-                                    >Descrição item</Input>
-                                </div>
-                                <div className="col-md-3">
-                                    <label className="col-form-label">Fornecedor</label>
-                                    {/*Preenchendo os dados do select com dados do banco*/}
-                                    <select onChange={exibirDados()} className="form-select" >
-                                        <option selected>Selecione</option>
-                                        {fornecedores.map(fornecedor =>
-                                            <option value={fornecedor.id} key={fornecedor.id}>{fornecedor.nome}</option>
-                                        )}
-                                    </select>
-                                </div>
-                                <div className="col-md-2">
-                                    <label className="col-form-label">Categoria</label>
-                                    <select className="form-select" >
-                                        <option selected>Selecione</option>
-                                        <option value="1">Bebidas</option>
-                                        <option value="2">Doces</option>
-                                        <option value="3">Aperitivos</option>
-                                        <option value="4">Tabacaria</option>
-                                    </select>
-                                </div>
-                                <div className="col-md-1">
-                                    <Input
-                                        type="number"
-                                        onChange={handleInputChangeItem}
-                                        value={item.qtUnidade}
-                                        name="qtUnidade"
-                                        id="qtUnidade"
-                                    >Qt unidade</Input>
-                                </div>
-                                <div className="col-md-1">
-                                    <Input
-                                        type="number"
-                                        onChange={handleInputChangeItem}
-                                        value={item.quantidadeCaixa}
-                                        name="quantidadeCaixa"
-                                        id="quantidadeCaixa"
-                                    >Qt caixa</Input> 
+                            </div>
+                            <div className="d-flex flex-wrap align-items-start justify-content-lg-start">
+                                <div className="row g-3 text-start">
+                                    <div className="col-md-3">
+                                        <Input
+                                            type="number"
+                                            onChange={handleInputChangeItem}
+                                            value={items.lote}
+                                            name="lote"
+                                            id="lote"
+                                        >Nº Lote</Input>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <Input
+                                            type="number"
+                                            onChange={handleInputChangeItem}
+                                            value={items.custo}
+                                            name="custo"
+                                            id="custo"
+                                        >R$ Custo</Input>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <Input
+                                            type="number"
+                                            onChange={handleInputChangeItem}
+                                            value={items.venda}
+                                            name="venda"
+                                            id="venda"
+                                        >R$ Venda</Input>
+                                    </div>
+
+                                    <div className="col-md-3">
+                                        <Input
+                                            type="number"
+                                            onChange={handleInputChangeItem}
+                                            value={items.imposto}
+                                            name="imposto"
+                                            id="imposto"
+                                        >Imposto (%)</Input>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={addItem}
+                                            >add Item</Button>
+
+                                        <Button
+                                            className="ms-2"
+                                            variant="contained"
+                                            color="inherit"
+                                            onClick={alerta}
+                                        >limpar</Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="d-flex flex-wrap align-items-start justify-content-lg-start">
-                            <div className="row g-3 text-start">
-                                <div className="col-md-3">
-                                    <Input
-                                        type="number"
-                                        onChange={handleInputChangeItem}
-                                        value={item.lote}
-                                        name="lote"
-                                        id="lote"
-                                    >Nº Lote</Input> 
-                                </div>
-                                <div className="col-md-3">
-                                    <Input
-                                        type="number"
-                                        onChange={handleInputChangeItem}
-                                        value={item.custo}
-                                        name="custo"
-                                        id="custo"
-                                    >R$ Custo</Input> 
-                                </div>
-                                <div className="col-md-3">
-                                    <Input
-                                        type="number"
-                                        onChange={handleInputChangeItem}
-                                        value={item.venda}
-                                        name="venda"
-                                        id="venda"
-                                    >R$ Venda</Input> 
-                                </div>
-
-                                <div className="col-md-3">
-                                    <Input
-                                        type="number"
-                                        onChange={handleInputChangeItem}
-                                        value={item.imposto}
-                                        name="imposto"
-                                        id="imposto"
-                                    >Imposto (%)</Input> 
-                                </div>
-                                <div className="col-md-4">
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={alerta}
-                                    >add Item</Button>
-
-                                    <Button
-                                        className="ms-2"
-                                        variant="contained"
-                                        color="inherit"
-                                        onClick={alerta}
-                                    >limpar</Button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </header>
- {/********************************* Final Itens *******************************************************************/}
+                {/********************************* Final Itens *******************************************************************/}
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-lg-center mt-3">
                         <div className="col-auto ">
@@ -244,27 +255,24 @@ const [items , setItem] = useState([]);
                                 </tr>
                             </thead>
                             <tbody>
-
-                            {items.map((item, i) => {
-                                return (
-                                <tr key={item.id}>
-                                    <td>{item.codigoBarras}</td>
-                                    <td>{item.descricao}</td>
-                                    <td>{item.fornecedor.nome}</td>
-                                    <td>{item.custo}</td>
-                                    <td>{item.venda}</td>
-                                    <td>{item.qtUnidade}</td>
-                                    <td>
-                                        <Button
-                                            variant="contained"
-                                            color="error"
-                                        /* onClick={saveFornecedor} */
-                                        >remover</Button>
-                                    </td>
-                                </tr>)
-                            })}
-
-
+                                {itens.map((item, i) => {
+                                    return (
+                                        <tr key={item.codigoBarras}>
+                                            <td>{item.codigoBarras}</td>
+                                            <td>{item.descricao}</td>
+                                            {/* <td>{item.fornecedor.nome}</td> */}
+                                            <td>{item.custo}</td>
+                                            <td>{item.venda}</td>
+                                            <td>{item.qtUnidade}</td>
+                                            <td>
+                                                <Button
+                                                    variant="contained"
+                                                    color="error"
+                                                
+                                                >remover</Button>
+                                            </td>
+                                        </tr>)
+                                })}
                             </tbody>
                         </table>
                     </div>

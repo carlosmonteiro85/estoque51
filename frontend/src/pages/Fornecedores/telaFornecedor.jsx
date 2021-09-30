@@ -23,6 +23,7 @@ export function TelaFornecedor() {
         const { name, value } = event.target;
         setFornecedor({ ...fornecedor, [name]: value });
     };
+    
     const preecherForm = (item) => {
         setFornecedor(item);
     }
