@@ -1,13 +1,15 @@
 
 import { Button } from "@material-ui/core";
 import { Input } from "components/input";
-import { useState} from "react";
+import { useState } from "react";
 
 export function TelaTeste() {
 
-    const [itens, setItem] = useState([]);
+    const [itens, setItem] = useState({});
 
     const [itensLista, setItemLista] = useState([]);
+
+    const [value, setValue] = useState('');
 
 
     const handleInputChangeItem = event => {
@@ -21,12 +23,24 @@ export function TelaTeste() {
     }
 
     const addItem = () => {
-
         itensLista.push(itens);
         console.log('############################');
         console.log(itensLista);
-
         setItemLista(itensLista);
+        limpar();
+    }
+
+    function limpar() {
+
+        
+
+        setItem({
+            input1: '',
+            input2: '',
+            input3: '',
+            selectOpcao: '', 
+        })
+
     }
 
     return (
@@ -84,15 +98,15 @@ export function TelaTeste() {
                                 </div>
                                 <div className="col-md-3">
                                     <label className="col-form-label">Opções</label>
-                                    <select name="selectOpcao" onChange={handleInputChangeItem} className="form-select" >
-                                        <option selected>Selecione</option>
+                                    <select value={itens.selectOpcao} name="selectOpcao" onChange={handleInputChangeItem} className="form-select" >
+                                        <option value="">Selecione</option>
                                         <option value="opcao_1">Opção 1</option>
                                         <option value="opcao_2">Opção 2</option>
                                     </select>
                                 </div>
                                 <div className="col-md-3">
                                     <Input
-                                        type="number"
+                                        type="text"
                                         onChange={handleInputChangeItem}
                                         value={itens.input3}
                                         name="input3"
@@ -110,7 +124,7 @@ export function TelaTeste() {
                                         className="ms-2"
                                         variant="contained"
                                         color="inherit"
-                                        onClick={alerta}
+                                        onClick={limpar}
                                     >limpar</Button>
                                 </div>
 
@@ -145,8 +159,8 @@ export function TelaTeste() {
                                     <tr key={item.id}>
                                         <td>{item.input1}</td>
                                         <td>{item.input2}</td>
-                                        <td>{item.seleselectOpcao}</td>
-                                        <td>{item.input4}</td>
+                                        <td>{item.selectOpcao}</td>
+                                        <td>{item.input3}</td>
                                         <td>
                                             <Button
                                                 variant="contained"
