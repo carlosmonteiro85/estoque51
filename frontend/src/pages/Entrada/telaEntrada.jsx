@@ -34,45 +34,40 @@ export function TelaEntrada() {
 
     /* const itens = []; */
 
+    
+   /*  const [items, setItem] = useState([]); */
     const [itens, setItens] = useState([]);
-
-    const [items, setItem] = useState([]);
-
+    const [item, setItem] = useState([]);
+    
     const handleInputChangeItem = event => {
         const { name, value } = event.target;
-        setItem({ ...items, [name]: value });
-        console.log({ ...items, [name]: value });
+        setItem({ ...item, [name]: value });
+        console.log({ ...item, [name]: value });
     };
-
+    
     /********************************* Final Logica Itens tabela *******************************************************************/
 
-    const exibirDados = () => {
-    }
-
-    
     function alerta() {
         alert("Funcionalidade ainda não implementada, logo estará funcionando... agradecemos a compreenção");
     }
 
     function addItem(){
-        itens.push(items);
-        setItens(items);
+        itens.push(item);
+        setItens(item);
         console.log(itens);
     }
-
-        //ciclo de vida de componentes
-        useEffect(() => {
-            serviceFornecedor.listarTodos().then(response => {
-                setFornecedores(response.data)
-                setItens(itens)
-                /* setItem(itens); */
-            })
-        }, [itens])
+    //ciclo de vida de componentes
+    useEffect(() => {
+        serviceFornecedor.listarTodos().then(response => {
+            setFornecedores(response.data)
+            /* setItem(itens); */
+        })
+        /* }, [itens]) */
+    }, [])
     
-
     return (
         <>
-            <form >
+            {/* <form > */}
                 <header className="p-3 text-white meuHead">
                     <div className="col-auto ">
                         <p className="h4 ">Cadastro de entrada de Itens</p>
@@ -121,7 +116,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="text"
                                             onChange={handleInputChangeItem}
-                                            value={items.codigoBarras}
+                                            value={item.codigoBarras}
                                             name="codigoBarras"
                                             id="codigoBarras"
                                         >Codigo de barras</Input>
@@ -130,7 +125,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="text"
                                             onChange={handleInputChangeItem}
-                                            value={items.descricao}
+                                            value={item.descricao}
                                             name="descricao"
                                             id="descricao"
                                         >Descrição item</Input>
@@ -138,7 +133,7 @@ export function TelaEntrada() {
                                     <div className="col-md-3">
                                         <label className="col-form-label">Fornecedor</label>
                                         {/*Preenchendo os dados do select com dados do banco*/}
-                                        <select onChange={exibirDados()} className="form-select" >
+                                        <select onChange={alerta} className="form-select" >
                                             <option selected>Selecione</option>
                                             {fornecedores.map(fornecedor =>
                                                 <option value={fornecedor.id} key={fornecedor.id}>{fornecedor.nome}</option>
@@ -159,7 +154,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="number"
                                             onChange={handleInputChangeItem}
-                                            value={items.qtUnidade}
+                                            value={item.qtUnidade}
                                             name="qtUnidade"
                                             id="qtUnidade"
                                         >Qt unidade</Input>
@@ -168,7 +163,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="number"
                                             onChange={handleInputChangeItem}
-                                            value={items.quantidadeCaixa}
+                                            value={item.quantidadeCaixa}
                                             name="quantidadeCaixa"
                                             id="quantidadeCaixa"
                                         >Qt caixa</Input>
@@ -181,7 +176,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="number"
                                             onChange={handleInputChangeItem}
-                                            value={items.lote}
+                                            value={item.lote}
                                             name="lote"
                                             id="lote"
                                         >Nº Lote</Input>
@@ -190,7 +185,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="number"
                                             onChange={handleInputChangeItem}
-                                            value={items.custo}
+                                            value={item.custo}
                                             name="custo"
                                             id="custo"
                                         >R$ Custo</Input>
@@ -199,7 +194,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="number"
                                             onChange={handleInputChangeItem}
-                                            value={items.venda}
+                                            value={item.venda}
                                             name="venda"
                                             id="venda"
                                         >R$ Venda</Input>
@@ -209,7 +204,7 @@ export function TelaEntrada() {
                                         <Input
                                             type="number"
                                             onChange={handleInputChangeItem}
-                                            value={items.imposto}
+                                            value={item.imposto}
                                             name="imposto"
                                             id="imposto"
                                         >Imposto (%)</Input>
@@ -277,7 +272,7 @@ export function TelaEntrada() {
                         </table>
                     </div>
                 </div>
-            </form>
+            {/* </form> */}
         </>
     );
 }
