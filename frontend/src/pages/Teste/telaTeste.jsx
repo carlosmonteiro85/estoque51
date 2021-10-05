@@ -15,7 +15,7 @@ export function TelaTeste() {
     const handleInputChangeItem = event => {
         const { name, value } = event.target;
         setItem({ ...itens, [name]: value });
-        console.log({ ...itens, [name]: value });
+/*         console.log({ ...itens, [name]: value }); */
     };
 
     function alerta() {
@@ -29,11 +29,8 @@ export function TelaTeste() {
         setItemLista(itensLista);
         limpar();
     }
-
+    //Função de limpar os campos
     function limpar() {
-
-        
-
         setItem({
             input1: '',
             input2: '',
@@ -41,6 +38,20 @@ export function TelaTeste() {
             selectOpcao: '', 
         })
 
+    }
+
+    function apagar(item){
+
+        var array = [...itensLista];
+
+        array.splice(array.indexOf(item.input1), 1);
+        console.log(array);
+        
+        setItemLista(array);
+        
+    }
+
+    const preecherForm = (item) => {
     }
 
     return (
@@ -165,7 +176,8 @@ export function TelaTeste() {
                                             <Button
                                                 variant="contained"
                                                 color="error"
-
+                                                onClick={() => apagar(item)} 
+                                              /*   onClick={apagar}  */
                                             >remover</Button>
                                         </td>
                                     </tr>)
